@@ -7,11 +7,12 @@ import javax.swing.JPanel;
 
 public class FractalPanel extends JPanel implements Runnable{
     
-    private ArrayList<Curve> curves;
+    private ArrayList<ICurve> curves;
+    private int count = 0;
     
     public FractalPanel() {
         curves = new ArrayList<>();
-        curves.add(new Curve(236, 640, 1264, 660));
+        curves.add(new CurveA(238, 650, 750, 138, 1262, 650));
         super.setVisible(true);
         new Thread(this).start();
     }
@@ -23,9 +24,18 @@ public class FractalPanel extends JPanel implements Runnable{
 
     @Override
     public void paint(Graphics g) {
+        count++;
         drawBackground(g);
-        for(Curve c:curves) {
+        for(ICurve c:curves) {
             c.draw(g);
+        }
+        if(count > 20) {
+            count = 0;
+            ArrayList<ICurve> temp = new ArrayList<>(curves);
+            for(ICurve ic:temp) {
+                curves.remove(ic);
+                curves.addAll(ic.replicate());
+            }
         }
     }
     
