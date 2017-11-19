@@ -6,12 +6,8 @@ import javax.swing.JFrame;
 public class FractalMain extends JFrame{
     public static void main(String[] args) {
         new FractalMain();
-        /*Curve c = new Curve(0, 0, 0, 0);
-        Curve.Line line1 = c.new Line(0, 0, -1);
-        System.out.println(line1.angledSlope());
-        Curve.Line line2 = line1.rotate(-46);
-        System.out.println(line2.slope);
-        System.out.println(line2.angledSlope());*/
+        /*CurveA c = new CurveA(24, 24, 0, 0, 48, 0, CurveA.Direction.UP);
+        System.out.println(c.p1.toString() + c.p2 + c.p3);*/
     }
     
     public FractalMain() {
